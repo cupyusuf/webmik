@@ -13,9 +13,12 @@ class Detail extends MY_Controller
         }
     }
 
-    public function index()
+    public function index($id_manga)
     {
-        $data = konfigurasi('Dashboard');
+        $data = array(
+            'title' => 'Detail Manga | WebMik',
+            'manga' => $this->model_manga->get_data($id_manga),
+        );
         $this->template->load('layouts/templateUser', 'member/detail', $data);
     }
 }

@@ -15,7 +15,10 @@ class Genre extends MY_Controller
 
     public function index()
     {
-        $data = konfigurasi('Dashboard');
+        $data = array(
+            'title' => 'Genre | WebMik',
+            'genre' => $this->model_genre->getAllGenre(),
+        );
         $this->template->load('layouts/templateUser', 'member/genre', $data);
     }
 }

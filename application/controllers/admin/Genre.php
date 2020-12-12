@@ -1,7 +1,6 @@
-<?php
+<?php 
 
-defined('BASEPATH') or exit('No direct script access allowed');
-
+defined('BASEPATH') OR exit('No direct script access allowed');
 class Genre extends MY_Controller
 {
     public function __construct()
@@ -13,9 +12,45 @@ class Genre extends MY_Controller
         }
     }
 
+    // List all your items
     public function index()
     {
-        $data = konfigurasi('Dashboard');
-        $this->template->load('layouts/template', 'admin/Genre', $data);
+        $data = array(
+            'title' => 'Genre | WebMik',
+            'genre' => $this->model_genre->getAllGenre(),
+        );
+        $this->template->load('layouts/template', 'admin/genre', $data);
+    }
+
+    // Add a new item
+    public function add()
+    {
+        $data = array(
+            'name_genre' => $this->input->post('name_genre'),
+        );
+        $this->Model_genre->Add($data);
+        $this->session->set_flashdata('msg', 'Data added successfully !!!');
+        redirect('admin/genre');
+    }
+
+    //Update one item
+    public function edit( $id_genre = NULL )
+    {
+        $data = array(
+            'id_genre' => $id_genre,
+            'name_genre' => $this->input->post('name_genre'),
+        );
+        $this->Model_genre->edit($data);
+        $this->session->set_flashdata('msg', 'Data Edited successfully !!!');
+        redirect('admin/genre');
+    }
+
+    //Delete one item
+    public function delete( $id_genre = NULL )
+    {
+        $data = array('id_genre'=>$id_genre);
+        $this->Model_genre->delete($data);
+        $this->session->set_flashdata('msg', 'Data deleted successfully !!!');
+        redirect('admin/genre');
     }
 }

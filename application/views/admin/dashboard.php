@@ -8,7 +8,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Dashboard v1</li>
+                    <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -21,11 +21,11 @@
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>30</h3>
+                        <h3><?= $total_genre ?></h3>
 
                         <p>Genre</p>
                     </div>
@@ -37,80 +37,47 @@
             </div>
             <!-- ./col -->
 
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>2000</h3>
+                        <h3><?= $total_manga ?></h3>
 
                         <p>Manga</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-database"></i>
+                        <i class="fas fa-book"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
 
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>200</h3>
+                        <h3><?= $total_pengguna ?></h3>
 
-                        <p>Anggota</p>
+                        <p>Pengguna</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-database"></i>
+                        <i class="fas fa-users"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
-
-            <div class="col-lg-4 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>7</h3>
-
-                        <p>Staff</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-purple">
                     <div class="inner">
-                        <h3>2000</h3>
+                        <h3><?= $total_posting ?></h3>
 
                         <p>Postingan</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <!-- ./col -->
-
-            <div class="col-lg-4 col-6">
-                <!-- small box -->
-                <div class="small-box bg-pink">
-                    <div class="inner">
-                        <h3>5</h3>
-
-                        <p>Laporan Rusak</p>
-                    </div>
-                    <div class="icon">
-                        <i class="fas fa-database"></i>
+                        <i class="fas fas fa-newspaper"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>

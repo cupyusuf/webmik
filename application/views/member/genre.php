@@ -17,120 +17,23 @@
 <!-- /.content-header -->
 
 <div class="col-md-12">
-    <div class="card card-primary">
-        <div class="card-header">
+    <div class="card">
+        <div class="card-header" style="background-color: #ea97ad;">
             <h3 class="card-title">
                 <i class="fas fa-edit"></i>
                 Genre
             </h3>
         </div>
         <div class="card-body pad table-responsive">
-            <table class="table text-center">
-                <tr>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-block btn-default">Default</button>
-                    </td>
-                </tr>
-            </table>
+            <!-- Small boxes (Stat box) -->
+            <div class="row">
+                <?php foreach ($genre as $key => $value) { ?>
+                <div class="col-3 pt-2">
+                    <a href="#" class="btn btn-default btn-block"><?= $value->name_genre; ?></a>
+                </div>
+                <?php } ?>
+            </div>
+            <!-- /.card -->
         </div>
-        <!-- /.card -->
     </div>
-</div>
-<!-- /.col -->
+    <!-- /.col -->

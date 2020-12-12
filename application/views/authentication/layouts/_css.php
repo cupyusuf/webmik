@@ -1,3 +1,4 @@
+<link rel="shortcut icon" href="<?php echo base_url('assets/uploads/images/logo.ico');?>">
 <!-- Font Awesome -->
 <link rel="stylesheet"
     href="<?php echo base_url('assets/vendor/AdminLTE-3');?>/plugins/fontawesome-free/css/all.min.css">

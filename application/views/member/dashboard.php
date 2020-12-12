@@ -25,7 +25,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>30</h3>
+                        <h3><?= $total_genre ?></h3>
 
                         <p>Genre</p>
                     </div>
@@ -41,12 +41,12 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>2000</h3>
+                        <h3><?= $total_manga ?></h3>
 
                         <p>Manga</p>
                     </div>
                     <div class="icon">
-                        <i class="fas fa-database"></i>
+                        <i class="fas fa-book"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>

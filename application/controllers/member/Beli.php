@@ -1,6 +1,4 @@
-<?php
-
-defined('BASEPATH') or exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Beli extends MY_Controller
 {
@@ -12,10 +10,12 @@ class Beli extends MY_Controller
             redirect('', 'refresh');
         }
     }
-
+    
     public function index()
     {
-        $data = konfigurasi('Dashboard');
-        $this->template->load('layouts/templateUser', 'member/beli', $data);
+		$data = array(
+            'title' => 'Beli Manga | WebMik',
+        );
+    	$this->template->load('layouts/templateUser', 'member/beli', $data);
     }
 }

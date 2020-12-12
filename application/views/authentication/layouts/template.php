@@ -10,7 +10,7 @@
     <?php require_once('_css.php') ;?>
 </head>
 
-<body class="hold-transition">
+<body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper login-page register-page">
         <?php echo $contents ;?>
     </div>

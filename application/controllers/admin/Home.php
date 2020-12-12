@@ -12,10 +12,16 @@ class Home extends MY_Controller
             redirect('', 'refresh');
         }
     }
-
+    
     public function index()
     {
-        $data = konfigurasi('Dashboard');
+        $data = array(
+            'title' => 'Dasbor | WebMik',
+            'total_genre' => $this->model_dasbor->total_genre(),
+            'total_manga' => $this->model_dasbor->total_manga(),
+            'total_pengguna' => $this->model_dasbor->total_pengguna(),
+            'total_posting' => $this->model_dasbor->total_posting(),
+        );
         $this->template->load('layouts/template', 'admin/dashboard', $data);
     }
 }

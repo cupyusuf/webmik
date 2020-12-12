@@ -19,11 +19,10 @@
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
-        <!-- Info boxes -->
         <div class="row">
             <div class="col-12 col-sm-6 col-md-3">
-                <div class="info-box">
-                    <span class="info-box-icon bg-info elevation-1"><i class="fab fa-get-pocket"></i></span>
+                <div class="info-box" id="pay-button">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fab fa-wolf-pack-battalion"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Hemat</span>
@@ -31,14 +30,9 @@
                             Rp. 10.000
                             <small>/ 1 hari</small>
                         </span>
-                        <a href="https://wa.me/18775904320" class="small-box-footer">Beli <i
-                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box -->
             </div>
-            <!-- /.col -->
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-secondary elevation-1"><i
@@ -49,21 +43,14 @@
                         <span class="info-box-number">Rp. 20.000
                             <small>/ 3 hari</small>
                         </span>
-                        <a href="https://wa.me/18775904320" class="small-box-footer">Beli <i
-                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box -->
             </div>
-            <!-- /.col -->
-
-            <!-- fix for small devices only -->
             <div class="clearfix hidden-md-up"></div>
 
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-shopping-cart"></i></span>
+                    <span class="info-box-icon bg-warning elevation-1"><i class="fab fa-wolf-pack-battalion"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Gold</span>
@@ -71,45 +58,58 @@
                             Rp. 50.000
                             <small>/ 7 hari</small>
                         </span>
-                        <a href="https://wa.me/18775904320" class="small-box-footer">Beli <i
-                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box -->
             </div>
-            <!-- /.col -->
             <div class="col-12 col-sm-6 col-md-3">
                 <div class="info-box mb-3">
-                    <span class="info-box-icon bg-dark elevation-1"><i class="fas fa-users"></i></span>
+                    <span class="info-box-icon bg-dark elevation-1"><i class="fab fa-wolf-pack-battalion"></i></span>
 
                     <div class="info-box-content">
                         <span class="info-box-text">Platinum</span>
                         <span class="info-box-number">Rp. 90.000
                             <small>/ 15 hari</small>
                         </span>
-                        <a href="https://wa.me/18775904320" class="small-box-footer">Beli <i
-                                class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
-                <!-- /.info-box -->
             </div>
-            <!-- /.col -->
         </div>
-        <!-- /.row -->
     </div>
 
-    <div class="callout callout-info">
-        <h5><i class="fas fa-info"></i> Informasi:</h5>
-        Silahkan Bayar Sesuai Paket Yang Di Beli <br>
-        <hr>
-        <b>BCA : 1390724942 </b>A.n Yusuf Supriadi <br>
-        <b>DANA : 085315064694 </b>A.n Yusuf Supriadi <br>
-        <hr>
-        Silahkan Kirim Bukti Pembayaran Ke WhatsApp Kami
-        <a href="https://wa.me/18775904320">Klik Disini</a>
-        <hr>
-        Mungkin Bila Sempat Untuk Pembayaran Akan Menggunakan Payment Gateway Untuk Memudahkan Dalam Bertransaksinya
+    <!-- <div class="container-fluid">
+        <form id="payment-form" method="post" action="<?=base_url('member/bayar')?>/snap/finish">
+            <input type="hidden" name="result_type" id="result-type" value="">
+            <input type="hidden" name="result_data" id="result-data" value="">
+        </form>
+
+        <form>
+            <label hidden>item id :</label>
+            <input type="text" id="id" name="id" value="a1" hidden>
+            <label hidden>price :</label>
+            <input type="text" id="price" name="price" value="10000" hidden>
+            <label hidden>quantity :</label>
+            <input type="text" id="quantity" name="quantity" value="1" hidden>
+            <label hidden>Nama Paket :</label>
+            <input type="text" id="name" name="name" value="Hemat" hidden>
+            <label hidden>Total :</label>
+            <input type="text" id="gross_amount" name="gross_amount" value="10000" hidden>
+            <button id="pay-button" hidden>Bayar</button>
+        </form>
+    </div> -->
+
+
+    <div class="container">
+        <form id="payment-form" method="post" action="<?=base_url('member/')?>snap/finish">
+            <input type="hidden" name="result_type" id="result-type" value="">
+            <input type="hidden" name="result_data" id="result-data" value="">
+        </form>
     </div>
+
+    <form>
+        <input hidden type="text" id="id" name="id" value="a1">
+        <input hidden type="text" id="price" name="price" value="10000">
+        <input hidden type="text" id="quantity" name="quantity" value="1">
+        <input hidden type="text" id="name" name="name" value="Hemat">
+        <input hidden type="text" id="gross_amount" name="gross_amount" value="10000">
+    </form>
 </section>

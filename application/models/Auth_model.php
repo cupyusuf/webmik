@@ -54,6 +54,21 @@ class Auth_model extends CI_Model
         return $query->row();
     }
 
+    public function reg()
+    {
+      date_default_timezone_set('ASIA/JAKARTA');
+      $data = array(
+        'username' => $this->input->post('username'),
+        'first_name' => $this->input->post('first_name'),
+        'last_name' => $this->input->post('last_name'),
+        'email' => $this->input->post('email'),
+        'id_role' => '2',
+        'created_at' => date('Y-m-d H:i:s'),
+        'password' => get_hash($this->input->post('password'))
+      );
+      return $this->db->insert($this->table, $data);
+    }
+
     public function logout($date, $id)
     {
         $this->db->where($this->id, $id);

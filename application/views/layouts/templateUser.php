@@ -14,7 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <?php require_once('_css.php') ;?>
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
     <div class="wrapper">
         <!-- header
         <?php require_once('_nav.php') ;?>

@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Genre</h1>
+                <h1 class="m-0 text-dark">Manga</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Genre</li>
+                    <li class="breadcrumb-item active">Manga</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -17,7 +17,7 @@
 <!-- /.content-header -->
 
 <div class="card col-12">
-    <div class="card-header">
+    <div class="card-header" style="background-color: #ea97ad;">
         <h3 class="card-title">Manga Pilihan</h3>
     </div>
     <!-- /.card-header -->
@@ -27,42 +27,35 @@
                 <tr>
                     <th>Sampul</th>
                     <th>Judul</th>
-                    <th>Penulis</th>
-                    <th>Penerbit</th>
                     <th>Genre</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
-            <tr>
-                <td>
-                    <img src="<?= base_url('/assets/uploads/manga') ?>/dragonball/cover/20959.jpg" alt="Sampul"
-                        width="150px">
-                </td>
-                <td>Dragon Ball</td>
-                <td>Akira Toriyama</td>
-                <td>Shounen</td>
-                <td>
-                    <span class="badge badge-info">Action</span>
-                    <span class="badge badge-info">Advanture</span>
-                    <span class="badge badge-info">Comedy</span>
-                    <span class="badge badge-info">Fantasy</span>
-                </td>
-                <th>
-                    <a href="<?php echo base_url('member/detail') ?>" class="btn btn-sm btn-success">
-                        <i class="fas fa-eye"></i>
-                        Detail
-                    </a>
-                    <a href="#" class="btn btn-sm btn-info">Bagikan</a>
-                </th>
-            </tr>
             <tbody>
+                <?php foreach ($manga as $key => $value) { ?>
+                <tr>
+                    <td><img src="<?= base_url('assets/uploads/cover-manga/'.$value->sampul_manga) ?>" width="150px"
+                            alt="Foto" class="img-fluid">
+                    </td>
+                    <td><?= $value->name_manga ?></td>
+                    <td>
+                        <span class="badge badge-info"><?= $value->name_genre ?></span>
+                    </td>
+                    <td>
+                        <a href="<?= base_url('member/manga/detail/' . $value->id_manga) ?>"
+                            class="btn btn-success btn-sm">
+                            <i class="fa fa-eye">
+                                <span class="ml-2 d-none d-lg-inline">Detail</span>
+                            </i>
+                        </a>
+                    </td>
+                </tr>
+                <?php } ?>
             </tbody>
             <tfoot>
                 <tr>
                     <th>Sampul</th>
                     <th>Judul</th>
-                    <th>Penulis</th>
-                    <th>Penerbit</th>
                     <th>Genre</th>
                     <th>Aksi</th>
                 </tr>
