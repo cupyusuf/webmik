@@ -8,14 +8,28 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Kelola User</li>
+                    <li class="breadcrumb-item active">Kelola Pengguna</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
+<div id="myalert">
+    <?php
+                echo validation_errors('<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>', '</div>');
 
+                if ($this->session->flashdata('alerts')) {
+                    echo '<div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Peringatan !!!</h5>';
+                    echo $this->session->flashdata('alerts');
+                    echo '</div>';
+                }
+        ?>
+</div>
 <!-- Main content -->
 <section class="content">
     <div class="row">
@@ -104,7 +118,7 @@
             </div>
             <div class="modal-body">
                 <?php
-                echo form_open('admin/kelolaUser/edit/' .$value->id);
+                echo form_open('admin/kelolauser/edit/' .$value->id);
                 ?>
                 <div class="form-group">
                     <label>Username</label>
@@ -161,7 +175,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <a href="<?= base_url('admin/kelolaUser/Delete/'.$value->id) ?>" class="btn btn-danger">Delete</a>
+                <a href="<?= base_url('admin/kelolauser/Delete/'.$value->id) ?>" class="btn btn-danger">Delete</a>
             </div>
         </div>
         <!-- /.modal-content -->

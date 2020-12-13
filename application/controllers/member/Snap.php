@@ -1,20 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Snap extends CI_Controller {
-
-	public function __construct()
-    {
-		parent::__construct();
-
-		header("Access-Control-Allow-Origin: *");
-		header("Access-Control-Allow-Methods: PUT, GET, POST");
-		header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-		
-        $params = array('server_key' => 'SB-Mid-server-ACb3fhrTl9FqCZlBhskSB2Wm', 'production' => false);
-		$this->load->library('midtrans');
-		$this->midtrans->config($params);
-		$this->load->helper('url');	
-    }
+class Snap extends MY_Controller {
 
     public function index()
     {

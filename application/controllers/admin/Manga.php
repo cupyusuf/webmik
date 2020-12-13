@@ -57,7 +57,7 @@ class Manga extends MY_Controller
                     'sampul_manga' => $upload_data['uploads']['file_name'],
                 );
                 $this->model_manga->add($data);
-                $this->session->set_flashdata('msg', 'data added successfully !!!');
+                $this->session->set_flashdata('alerts', 'Manga Berhasil Ditambahkan !!!');
                 redirect('admin/manga');
             }
         } 
@@ -124,7 +124,7 @@ class Manga extends MY_Controller
                     'description' => $this->input->post('description'),
                 );
                 $this->model_manga->edit($data);
-                $this->session->set_flashdata('msg', 'data edited successfully !!!');
+                $this->session->set_flashdata('alerts', 'Manga Berhasil Diedit !!!');
                 redirect('admin/manga');
             } 
             
@@ -149,7 +149,7 @@ class Manga extends MY_Controller
         // End Delete Image
         $data = array('id_manga'=>$id_manga);
         $this->model_manga->delete($data);
-        $this->session->set_flashdata('msg', 'Data deleted successfully !!!');
+        $this->session->set_flashdata('alerts', 'Manga Berhasil Dihapus !!!');
         redirect('admin/manga');
     }
 }

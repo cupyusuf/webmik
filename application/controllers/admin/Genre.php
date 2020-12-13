@@ -28,8 +28,8 @@ class Genre extends MY_Controller
         $data = array(
             'name_genre' => $this->input->post('name_genre'),
         );
-        $this->Model_genre->Add($data);
-        $this->session->set_flashdata('msg', 'Data added successfully !!!');
+        $this->model_genre->Add($data);
+        $this->session->set_flashdata('alerts', 'Genre Berhasil Ditambahkan !!!');
         redirect('admin/genre');
     }
 
@@ -41,7 +41,7 @@ class Genre extends MY_Controller
             'name_genre' => $this->input->post('name_genre'),
         );
         $this->Model_genre->edit($data);
-        $this->session->set_flashdata('msg', 'Data Edited successfully !!!');
+        $this->session->set_flashdata('alerts', 'Genre Berhasil Diedit !!!');
         redirect('admin/genre');
     }
 
@@ -50,7 +50,7 @@ class Genre extends MY_Controller
     {
         $data = array('id_genre'=>$id_genre);
         $this->Model_genre->delete($data);
-        $this->session->set_flashdata('msg', 'Data deleted successfully !!!');
+        $this->session->set_flashdata('alerts', 'Genre Berhasil Dihapus !!!');
         redirect('admin/genre');
     }
 }

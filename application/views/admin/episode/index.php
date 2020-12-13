@@ -15,6 +15,22 @@
     </div><!-- /.container-fluid -->
 </div>
 <!-- /.content-header -->
+<div id="myalert">
+    <?php
+                echo validation_errors('<div class="alert alert-warning alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>', '</div>');
+
+                if ($this->session->flashdata('alerts')) {
+                    echo '<div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Peringatan !!!</h5>';
+                    echo $this->session->flashdata('alerts');
+                    echo '</div>';
+                }
+        ?>
+</div>
+
 
 <div class="col-md-12">
     <div class="card">

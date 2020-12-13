@@ -65,24 +65,24 @@
                             <a href="<?= base_url('admin/albums') ?>"
                                 class="nav-link <?php if ($this->uri->segment(2) == 'albums') {echo "active";} ?>"
                                 class="nav-link active">
-                                <i class="fas fa-images nav-icon"></i>
-                                <p>Album Manga</p>
+                                <i class="fas fa-images nav-icon text-dark"></i>
+                                <p class="text-dark">Album Manga</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('admin/genre') ?>"
                                 class="nav-link <?php if ($this->uri->segment(2) == 'genre') {echo "active";} ?>"
                                 class="nav-link active">
-                                <i class="fas fa-database nav-icon"></i>
-                                <p>Genre</p>
+                                <i class="fas fa-database nav-icon text-dark"></i>
+                                <p class="text-dark">Genre</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url('admin/manga') ?>"
                                 class="nav-link <?php if ($this->uri->segment(2) == 'manga') {echo "active";} ?>"
                                 class="nav-link active">
-                                <i class="nav-icon fas fa-book"></i>
-                                <p>Manga</p>
+                                <i class="nav-icon fas fa-book text-dark"></i>
+                                <p class="text-dark">Manga</p>
                             </a>
                         </li>
                     </ul>

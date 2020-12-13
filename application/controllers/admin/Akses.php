@@ -30,7 +30,7 @@ class Akses extends MY_Controller
             'description' => $this->input->post('description'),
         );
         $this->Model_akses->Add($data);
-        $this->session->set_flashdata('alerts', 'Data Berhasil Di tambahkan !!!');
+        $this->session->set_flashdata('alerts', 'Data Berhasil Ditambahkan !!!');
         redirect('admin/akses');
     }
 
