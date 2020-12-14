@@ -32,7 +32,8 @@
                     <div class="icon">
                         <i class="fas fa-database"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="admin/genre" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -48,7 +49,8 @@
                     <div class="icon">
                         <i class="fas fa-book"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="admin/manga" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -64,7 +66,8 @@
                     <div class="icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="admin/kelolauser" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -79,7 +82,8 @@
                     <div class="icon">
                         <i class="fas fas fa-newspaper"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="admin/postingan" class="small-box-footer">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->

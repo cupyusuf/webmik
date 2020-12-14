@@ -32,7 +32,7 @@ class Kelolauser extends MY_Controller
             'id_paket' => $this->input->post('id_paket'),
         );
         $this->Model_kelolauser->edit($data);
-        $this->session->set_flashdata('msg', 'Data Edited successfully !!!');
+        $this->session->set_flashdata('alerts', 'Data Berhasil Diedit !!!');
         redirect('admin/kelolaUser');
     }
 
@@ -41,7 +41,7 @@ class Kelolauser extends MY_Controller
     {
         $data = array('id'=>$id);
         $this->Model_kelolauser->delete($data);
-        $this->session->set_flashdata('msg', 'Data deleted successfully !!!');
+        $this->session->set_flashdata('alerts', 'Data Berhasil Dihapus !!!');
         redirect('admin/kelolaUser');
     }
 }

@@ -48,7 +48,7 @@ class Postingan extends MY_Controller
             ];
             
             $this->db->insert('tbl_article',$data);
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">New Article Added!</div>');
+            $this->session->set_flashdata('alerts', 'Postingan Berhasil Ditambahkan !!!');
             redirect('admin/postingan');
         }
     }
@@ -95,7 +95,7 @@ class Postingan extends MY_Controller
      {
          $data = array('id_article'=>$id_article);
          $this->model_post->delete($data);
-         $this->session->set_flashdata('msg', 'Data deleted successfully !!!');
+         $this->session->set_flashdata('alerts', 'Postingan Berhasil Dihapus !!!');
          redirect('admin/postingan');
      }
 }

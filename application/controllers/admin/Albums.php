@@ -53,7 +53,7 @@ class Albums extends MY_Controller
                     'image' => $upload_data['uploads']['file_name'],
                 );
                 $this->model_albums->add($data);
-                $this->session->set_flashdata('msg', 'Image added successfully !!!');
+                $this->session->set_flashdata('alerts', 'Gambar Berhasil Ditambahkan !!!');
                 redirect('admin/albums/add/' . $id_manga);
             }
         } 
@@ -78,7 +78,7 @@ class Albums extends MY_Controller
         // End Delete Image
         $data = array('id_image'=>$id_image);
         $this->model_albums->delete($data);
-        $this->session->set_flashdata('msg', 'Image deleted successfully !!!');
-        redirect('admin/albums' . $id_manga);
+        $this->session->set_flashdata('alerts', 'Gambar Berhasil Dihapus !!!');
+        redirect('admin/albums/add/' . $id_manga);
     }
 }

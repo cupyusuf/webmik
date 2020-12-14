@@ -76,6 +76,33 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="callout callout-danger">
+            <h5><i class="fas fa-info"></i> <b>Konfirmasi :</b></h5>
+            Setelah melakukan pembayaran silahkan konfirmasi ke kontak admin agar paket segera aktif. Chat Admin dengan
+            menyertakan
+            struk pembayaran dan username / email <br>
+            <b>Contoh :</b><br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="position-relative">
+                        <img src="<?= base_url('assets/uploads/images/nota.png') ?>" alt="Struk"
+                            class="img-fluid rounded" style="height: 360px">
+                        <div class="ribbon-wrapper ribbon">
+                            <div class="ribbon bg-pink">
+                                Struk
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <span> <b>Username :</b> yusuf</span><br>
+            <a href="https://wa.me/18775904320/" class="btn bg-pink"><i class="fab fa-whatsapp">
+                    Whatsapp</i></a>
+        </div>
+    </div>
+
+
     <!-- <div class="container-fluid">
         <form id="payment-form" method="post" action="<?=base_url('member/bayar')?>/snap/finish">
             <input type="hidden" name="result_type" id="result-type" value="">
