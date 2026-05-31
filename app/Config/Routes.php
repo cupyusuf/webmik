@@ -1,0 +1,19 @@
+<?php
+
+use CodeIgniter\Router\RouteCollection;
+
+/** @var RouteCollection $routes */
+$routes->get('/', 'Home::index');
+$routes->get('checkout', 'Home::checkout');
+$routes->get('manga', 'Manga::index');
+$routes->get('posts', 'Posts::index');
+// Admin
+$routes->get('admin', 'Admin::index', ['filter' => 'admin']);
+// Auth
+$routes->match(['get', 'post'], 'auth/login', 'Auth::login');
+$routes->get('auth/logout', 'Auth::logout');
+
+// Payment migration routes
+$routes->post('snap/token', 'Payment::snapToken');
+$routes->get('vtweb/checkout', 'Payment::vtweb');
+$routes->post('vtdirect/charge', 'Payment::vtdirect_cc_charge');

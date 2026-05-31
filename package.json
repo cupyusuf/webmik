@@ -1,0 +1,18 @@
+{
+    "name": "webmik-frontend",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "build:css": "tailwindcss -i ./src/styles/input.css -o ./public/assets/css/tailwind.css --minify",
+        "watch:css": "tailwindcss -i ./src/styles/input.css -o ./public/assets/css/tailwind.css --watch"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.14",
+        "postcss": "^8.4.24",
+        "tailwindcss": "^3.4.6",
+        "daisyui": "^2.0.0"
+    },
+    "dependencies": {
+        "sweetalert2": "^11.7.12"
+    }
+}
