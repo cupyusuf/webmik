@@ -12,6 +12,7 @@ $routes->get('admin', 'Admin::index', ['filter' => 'admin']);
 $routes->post('admin/covers/upload', 'Admin::uploadCover', ['filter' => 'admin']);
 // Auth
 $routes->match(['get', 'post'], 'auth/login', 'Auth::login');
+$routes->match(['get', 'post'], 'auth/register', 'Auth::register');
 $routes->get('auth/logout', 'Auth::logout');
 
 // Payment migration routes

@@ -99,6 +99,61 @@ class Auth extends \App\Controllers\BaseController
         return view('auth/login');
     }
 
+    public function register()
+    {
+        $request = service('request');
+        $session = Services::session();
+
+        if ($session->get('is_login')) {
+            return redirect()->to('/admin');
+        }
+
+        if ($request->getMethod() === 'post') {
+            $name = trim((string) $request->getPost('name'));
+            $email = trim((string) $request->getPost('email'));
+            $password = (string) $request->getPost('password');
+            $confirmPassword = (string) $request->getPost('password_confirm');
+
+            if ($name === '' || $email === '' || $password === '') {
+                $session->setFlashdata('error', 'Semua field wajib diisi.');
+                return redirect()->back();
+            }
+
+            if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $session->setFlashdata('error', 'Format email tidak valid.');
+                return redirect()->back();
+            }
+
+            if ($password !== $confirmPassword) {
+                $session->setFlashdata('error', 'Password dan konfirmasi tidak sama.');
+                return redirect()->back();
+            }
+
+            if (strlen($password) < 8) {
+                $session->setFlashdata('error', 'Password minimal 8 karakter.');
+                return redirect()->back();
+            }
+
+            $userModel = new UserModel();
+            if ($userModel->findByEmail($email)) {
+                $session->setFlashdata('error', 'Email sudah terdaftar.');
+                return redirect()->back();
+            }
+
+            $userModel->insert([
+                'name' => $name,
+                'email' => $email,
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'role' => 'member',
+            ]);
+
+            $session->setFlashdata('success', 'Akun berhasil dibuat. Silakan login untuk masuk ke admin.');
+            return redirect()->to('/auth/login');
+        }
+
+        return view('auth/register');
+    }
+
     public function logout()
     {
         $session = Services::session();
