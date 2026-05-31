@@ -54,12 +54,7 @@ class CreateMangaPosts extends Migration
 
     public function down()
     {
-        if ($this->db->tableExists('manga')) {
-            $this->forge->dropTable('manga', true);
-        }
-
-        if ($this->db->tableExists('posts')) {
-            $this->forge->dropTable('posts', true);
-        }
+        $this->forge->dropTable('manga', true);
+        $this->forge->dropTable('posts', true);
     }
 }
