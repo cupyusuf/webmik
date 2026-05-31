@@ -9,6 +9,7 @@ $routes->get('manga', 'Manga::index');
 $routes->get('posts', 'Posts::index');
 // Admin
 $routes->get('admin', 'Admin::index', ['filter' => 'admin']);
+$routes->post('admin/covers/upload', 'Admin::uploadCover', ['filter' => 'admin']);
 // Auth
 $routes->match(['get', 'post'], 'auth/login', 'Auth::login');
 $routes->get('auth/logout', 'Auth::logout');

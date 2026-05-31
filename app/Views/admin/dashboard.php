@@ -21,23 +21,67 @@ $recent_manga = $recent_manga ?? [];
             </div>
         </div>
 
+        <?php if (! empty($flash_success)): ?>
+            <div class="alert alert-success shadow-md">
+                <span><?= esc($flash_success) ?></span>
+            </div>
+        <?php endif; ?>
+
+        <?php if (! empty($flash_error)): ?>
+            <div class="alert alert-error shadow-md">
+                <span><?= esc($flash_error) ?></span>
+            </div>
+        <?php endif; ?>
+
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title">Upload Cover</h2>
+                <p class="text-sm text-base-content/70">Unggah JPG, PNG, atau WEBP untuk manga/post, lalu update record berdasarkan slug.</p>
+
+                <form action="<?= site_url('admin/covers/upload') ?>" method="post" enctype="multipart/form-data" class="grid gap-4 md:grid-cols-4 mt-4">
+                    <?= csrf_field() ?>
+                    <label class="form-control">
+                        <span class="label-text">Content Type</span>
+                        <select name="content_type" class="select select-bordered w-full" required>
+                            <option value="manga">Manga</option>
+                            <option value="posts">Posts</option>
+                        </select>
+                    </label>
+
+                    <label class="form-control">
+                        <span class="label-text">Slug</span>
+                        <input type="text" name="slug" class="input input-bordered w-full" placeholder="tales-of-the-blue-sea" required>
+                    </label>
+
+                    <label class="form-control md:col-span-2">
+                        <span class="label-text">Cover Image</span>
+                        <input type="file" name="cover_file" class="file-input file-input-bordered w-full" accept="image/png,image/jpeg,image/webp" required>
+                    </label>
+
+                    <div class="md:col-span-4 flex justify-end">
+                        <button type="submit" class="btn btn-primary">Upload Cover</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div class="card bg-base-100 shadow-xl">
                 <div class="card-body">
                     <span class="text-sm uppercase tracking-wide text-base-content/50">Users</span>
-                    <p class="text-4xl font-black"><?= esc($total_users) ?></p>
+                    <p class="text-4xl font-black"><?= (int) $total_users ?></p>
                 </div>
             </div>
             <div class="card bg-base-100 shadow-xl">
                 <div class="card-body">
                     <span class="text-sm uppercase tracking-wide text-base-content/50">Posts</span>
-                    <p class="text-4xl font-black"><?= esc($total_posts) ?></p>
+                    <p class="text-4xl font-black"><?= (int) $total_posts ?></p>
                 </div>
             </div>
             <div class="card bg-base-100 shadow-xl">
                 <div class="card-body">
                     <span class="text-sm uppercase tracking-wide text-base-content/50">Manga</span>
-                    <p class="text-4xl font-black"><?= esc($total_manga) ?></p>
+                    <p class="text-4xl font-black"><?= (int) $total_manga ?></p>
                 </div>
             </div>
         </div>

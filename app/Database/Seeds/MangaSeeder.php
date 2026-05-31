@@ -14,7 +14,7 @@ class MangaSeeder extends Seeder
                 'slug' => 'tales-of-the-blue-sea',
                 'synopsis' => 'A thrilling adventure across mysterious islands and ancient ruins.',
                 'author' => 'A. Author',
-                'cover' => base_url('assets/images/placeholder-cover.svg'),
+                'cover' => base_url('assets/images/covers/manga-blue-sea.png'),
                 'status' => 'ongoing',
                 'created_at' => date('Y-m-d H:i:s')
             ],
@@ -23,7 +23,7 @@ class MangaSeeder extends Seeder
                 'slug' => 'stories-of-the-night',
                 'synopsis' => 'Dark fantasy anthology about heroes and monsters.',
                 'author' => 'B. Writer',
-                'cover' => base_url('assets/images/placeholder-cover.svg'),
+                'cover' => base_url('assets/images/covers/manga-night.jpg'),
                 'status' => 'completed',
                 'created_at' => date('Y-m-d H:i:s')
             ]

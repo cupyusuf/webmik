@@ -73,18 +73,18 @@ class ContentService
     private function sampleManga(): array
     {
         return [
-            ['title' => 'Moonlit Archive', 'slug' => 'moonlit-archive', 'synopsis' => 'Ritme cerita tenang dengan visual besar dan atmosfer kuat.', 'author' => 'Studio Polaris', 'status' => 'Ongoing'],
-            ['title' => 'Iron Bloom', 'slug' => 'iron-bloom', 'synopsis' => 'Aksi cepat dengan fokus pada karakter dan konflik kota.', 'author' => 'Vera Tan', 'status' => 'Featured'],
-            ['title' => 'Sora Loop', 'slug' => 'sora-loop', 'synopsis' => 'Dunia futuristik yang bergerak di antara teknologi dan memori.', 'author' => 'Team Sora', 'status' => 'New'],
+            ['title' => 'Moonlit Archive', 'slug' => 'moonlit-archive', 'synopsis' => 'Ritme cerita tenang dengan visual besar dan atmosfer kuat.', 'author' => 'Studio Polaris', 'status' => 'Ongoing', 'cover' => base_url('assets/images/covers/manga-blue-sea.png')],
+            ['title' => 'Iron Bloom', 'slug' => 'iron-bloom', 'synopsis' => 'Aksi cepat dengan fokus pada karakter dan konflik kota.', 'author' => 'Vera Tan', 'status' => 'Featured', 'cover' => base_url('assets/images/covers/manga-night.jpg')],
+            ['title' => 'Sora Loop', 'slug' => 'sora-loop', 'synopsis' => 'Dunia futuristik yang bergerak di antara teknologi dan memori.', 'author' => 'Team Sora', 'status' => 'New', 'cover' => base_url('assets/images/placeholder-cover.svg')],
         ];
     }
 
     private function samplePosts(): array
     {
         return [
-            ['title' => 'Mengapa WebMik pindah ke CI4', 'slug' => 'mengapa-webmik-pindah-ke-ci4', 'excerpt' => 'Struktur baru membuat auth, payment, dan konten lebih mudah dipelihara.'],
-            ['title' => 'Midtrans Snap dan VTWeb dalam satu alur', 'slug' => 'midtrans-snap-vtweb', 'excerpt' => 'Checkout sekarang memakai konfigurasi yang terpusat di environment.'],
-            ['title' => 'Tailwind + daisyUI untuk UI yang konsisten', 'slug' => 'tailwind-daisyui-ui', 'excerpt' => 'Komponen publik dan admin dirapikan tanpa bergantung pada AdminLTE.'],
+            ['title' => 'Mengapa WebMik pindah ke CI4', 'slug' => 'mengapa-webmik-pindah-ke-ci4', 'excerpt' => 'Struktur baru membuat auth, payment, dan konten lebih mudah dipelihara.', 'cover' => base_url('assets/images/covers/post-redesign.jpg')],
+            ['title' => 'Midtrans Snap dan VTWeb dalam satu alur', 'slug' => 'midtrans-snap-vtweb', 'excerpt' => 'Checkout sekarang memakai konfigurasi yang terpusat di environment.', 'cover' => base_url('assets/images/covers/post-snap.png')],
+            ['title' => 'Tailwind + daisyUI untuk UI yang konsisten', 'slug' => 'tailwind-daisyui-ui', 'excerpt' => 'Komponen publik dan admin dirapikan tanpa bergantung pada AdminLTE.', 'cover' => base_url('assets/images/placeholder-cover.svg')],
         ];
     }
 }

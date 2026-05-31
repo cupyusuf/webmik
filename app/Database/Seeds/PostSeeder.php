@@ -14,7 +14,7 @@ class PostSeeder extends Seeder
                 'slug' => 'introducing-webmik-redesign',
                 'excerpt' => 'Say hello to a cleaner, faster WebMik experience.',
                 'body' => 'Full article content here...',
-                'cover' => base_url('assets/images/placeholder-cover.svg'),
+                'cover' => base_url('assets/images/covers/post-redesign.jpg'),
                 'created_at' => date('Y-m-d H:i:s')
             ],
             [
@@ -22,7 +22,7 @@ class PostSeeder extends Seeder
                 'slug' => 'how-to-use-midtrans-snap',
                 'excerpt' => 'Step-by-step guide to integrate payments with Midtrans Snap.',
                 'body' => 'Full guide content...',
-                'cover' => base_url('assets/images/placeholder-cover.svg'),
+                'cover' => base_url('assets/images/covers/post-snap.png'),
                 'created_at' => date('Y-m-d H:i:s')
             ]
         ];
