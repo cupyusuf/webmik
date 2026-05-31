@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/tailwind.css') ?>">
 </head>
 
-<body class="antialiased font-sans" style="font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">
+<body class="antialiased font-sans"
+    style="font-family:Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;">
 
     <header class="bg-base-100/60 backdrop-blur sticky top-0 z-40 border-b border-base-200">
         <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
@@ -21,15 +22,22 @@
                 <span class="font-extrabold text-lg">WebMik</span>
             </a>
 
-            <nav class="hidden md:flex gap-4 items-center">
-                <a href="<?= site_url('manga') ?>" class="text-sm link link-hover">Manga</a>
-                <a href="<?= site_url('posts') ?>" class="text-sm link link-hover">Artikel</a>
-                <a href="<?= site_url('checkout') ?>" class="text-sm btn btn-sm btn-primary">Checkout</a>
-                <button id="theme-toggle" class="btn btn-ghost btn-sm" aria-label="Toggle theme">🌗</button>
+            <nav class="hidden md:flex gap-2 items-center">
+                <a href="<?= site_url('manga') ?>" class="btn btn-ghost btn-sm">Manga</a>
+                <a href="<?= site_url('posts') ?>" class="btn btn-ghost btn-sm">Artikel</a>
+                <a href="<?= site_url('checkout') ?>" class="btn btn-primary btn-sm">Checkout</a>
+                <button id="theme-toggle" class="btn btn-ghost btn-sm" aria-label="Toggle theme">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                            d="M12 3v2m0 14v2m8-10h-2M6 12H4m11.657-5.657-1.414 1.414M7.757 16.243l-1.414 1.414m0-11.314 1.414 1.414m9.9 9.9-1.414 1.414M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
             </nav>
 
             <button class="md:hidden btn btn-ghost" id="mobile-menu-button" aria-label="Open menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
