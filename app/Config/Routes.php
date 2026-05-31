@@ -10,6 +10,8 @@ $routes->get('posts', 'Posts::index');
 // Admin
 $routes->get('admin', 'Admin::index', ['filter' => 'admin']);
 $routes->post('admin/covers/upload', 'Admin::uploadCover', ['filter' => 'admin']);
+$routes->match(['get', 'post'], 'admin/manga/edit/(:segment)', 'Admin::editManga/$1', ['filter' => 'admin']);
+$routes->match(['get', 'post'], 'admin/posts/edit/(:segment)', 'Admin::editPost/$1', ['filter' => 'admin']);
 // Auth
 $routes->match(['get', 'post'], 'auth/login', 'Auth::login');
 $routes->match(['get', 'post'], 'auth/register', 'Auth::register');

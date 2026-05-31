@@ -1,0 +1,16 @@
+<svg width="960" height="960" viewBox="0 0 960 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="960" rx="56" fill="#0F172A"/>
+  <circle cx="300" cy="260" r="150" fill="#22D3EE" fill-opacity="0.18"/>
+  <circle cx="760" cy="710" r="190" fill="#FBBF24" fill-opacity="0.14"/>
+  <rect x="168" y="200" width="624" height="560" rx="44" fill="#111827" stroke="#334155" stroke-width="10"/>
+  <path d="M310 360C310 300 358 252 418 252H542C602 252 650 300 650 360V600C650 660 602 708 542 708H418C358 708 310 660 310 600V360Z" fill="#1E293B" stroke="#38BDF8" stroke-width="10"/>
+  <path d="M372 444L445 516L588 372" stroke="#FDE047" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="244" y="676" width="472" height="52" rx="26" fill="#0B1120"/>
+  <text x="280" y="710" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="28" font-weight="700">WEBMIK ACCESS</text>
+  <rect x="230" y="150" width="180" height="34" rx="17" fill="#0EA5E9"/>
+  <text x="252" y="174" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="18" font-weight="700">ADMIN GATE</text>
+  <rect x="548" y="150" width="180" height="34" rx="17" fill="#F59E0B"/>
+  <text x="578" y="174" fill="#FFF7ED" font-family="Arial, sans-serif" font-size="18" font-weight="700">CONTROL ROOM</text>
+  <path d="M240 260C240 237 258 219 281 219H335C358 219 376 237 376 260V290H240V260Z" fill="#38BDF8" fill-opacity="0.35"/>
+  <path d="M584 260C584 237 602 219 625 219H679C702 219 720 237 720 260V290H584V260Z" fill="#FBBF24" fill-opacity="0.35"/>
+</svg>

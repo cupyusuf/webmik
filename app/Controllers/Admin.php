@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\MangaModel;
+use App\Models\PostModel;
 use App\Services\ContentService;
 use Config\Database;
 use Config\Services;
@@ -37,25 +39,117 @@ class Admin extends \App\Controllers\BaseController
             return redirect()->back()->with('flash_error', 'Format cover harus JPG, PNG, atau WEBP.');
         }
 
-        $uploadDir = FCPATH . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'covers';
-        if (! is_dir($uploadDir)) {
-            mkdir($uploadDir, 0755, true);
-        }
-
-        $safeSlug = preg_replace('/[^a-z0-9\-]+/i', '-', strtolower($slug));
-        $fileName = $type . '-' . $safeSlug . '-' . time();
-        $targetPath = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
-
-        $resultPath = $this->resizeAndStoreCover($coverFile->getTempName(), $mimeType, $targetPath);
-        if ($resultPath === null) {
+        $publicPath = $this->storeCoverAsset($type, $slug, $coverFile);
+        if ($publicPath === null) {
             return redirect()->back()->with('flash_error', 'Gagal menyimpan cover.');
         }
 
-        $publicPath = base_url('assets/images/covers/' . basename($resultPath));
         $db = Database::connect();
         $db->table($type)->where('slug', $slug)->update(['cover' => $publicPath]);
 
         return redirect()->to(site_url('admin'))->with('flash_success', 'Cover berhasil diunggah dan data diperbarui.');
+    }
+
+    public function editManga(string $slug)
+    {
+        helper('form');
+
+        $session = Services::session();
+        $model = new MangaModel();
+        $item = $model->where('slug', $slug)->first();
+
+        if (! $item) {
+            return redirect()->to(site_url('admin'))->with('flash_error', 'Manga tidak ditemukan.');
+        }
+
+        if ($this->request->getMethod() === 'post') {
+            $title = trim((string) $this->request->getPost('title'));
+            $newSlug = trim((string) $this->request->getPost('slug'));
+            $synopsis = trim((string) $this->request->getPost('synopsis'));
+            $author = trim((string) $this->request->getPost('author'));
+            $status = trim((string) $this->request->getPost('status'));
+            $coverFile = $this->request->getFile('cover_file');
+
+            if ($title === '' || $newSlug === '' || $synopsis === '' || $author === '' || $status === '') {
+                return redirect()->back()->withInput()->with('flash_error', 'Semua field manga wajib diisi.');
+            }
+
+            $updateData = [
+                'title' => $title,
+                'slug' => $newSlug,
+                'synopsis' => $synopsis,
+                'author' => $author,
+                'status' => $status,
+            ];
+
+            if ($coverFile && $coverFile->isValid() && $coverFile->getSize() > 0) {
+                $coverPath = $this->storeCoverAsset('manga', $newSlug, $coverFile);
+                if ($coverPath === null) {
+                    return redirect()->back()->withInput()->with('flash_error', 'Cover manga gagal disimpan.');
+                }
+                $updateData['cover'] = $coverPath;
+            }
+
+            $model->update($item['id'], $updateData);
+
+            return redirect()->to(site_url('admin'))->with('flash_success', 'Manga berhasil diperbarui.');
+        }
+
+        return view('admin/manga_edit', [
+            'item' => $item,
+            'flash_success' => $session->getFlashdata('flash_success'),
+            'flash_error' => $session->getFlashdata('flash_error'),
+        ]);
+    }
+
+    public function editPost(string $slug)
+    {
+        helper('form');
+
+        $session = Services::session();
+        $model = new PostModel();
+        $item = $model->where('slug', $slug)->first();
+
+        if (! $item) {
+            return redirect()->to(site_url('admin'))->with('flash_error', 'Post tidak ditemukan.');
+        }
+
+        if ($this->request->getMethod() === 'post') {
+            $title = trim((string) $this->request->getPost('title'));
+            $newSlug = trim((string) $this->request->getPost('slug'));
+            $excerpt = trim((string) $this->request->getPost('excerpt'));
+            $body = trim((string) $this->request->getPost('body'));
+            $coverFile = $this->request->getFile('cover_file');
+
+            if ($title === '' || $newSlug === '' || $excerpt === '' || $body === '') {
+                return redirect()->back()->withInput()->with('flash_error', 'Semua field post wajib diisi.');
+            }
+
+            $updateData = [
+                'title' => $title,
+                'slug' => $newSlug,
+                'excerpt' => $excerpt,
+                'body' => $body,
+            ];
+
+            if ($coverFile && $coverFile->isValid() && $coverFile->getSize() > 0) {
+                $coverPath = $this->storeCoverAsset('posts', $newSlug, $coverFile);
+                if ($coverPath === null) {
+                    return redirect()->back()->withInput()->with('flash_error', 'Cover post gagal disimpan.');
+                }
+                $updateData['cover'] = $coverPath;
+            }
+
+            $model->update($item['id'], $updateData);
+
+            return redirect()->to(site_url('admin'))->with('flash_success', 'Post berhasil diperbarui.');
+        }
+
+        return view('admin/post_edit', [
+            'item' => $item,
+            'flash_success' => $session->getFlashdata('flash_success'),
+            'flash_error' => $session->getFlashdata('flash_error'),
+        ]);
     }
 
     private function resizeAndStoreCover(string $sourcePath, string $mimeType, string $targetBasePath): ?string
@@ -105,5 +199,31 @@ class Admin extends \App\Controllers\BaseController
         imagedestroy($canvas);
 
         return $saved ? $finalPath : null;
+    }
+
+    private function storeCoverAsset(string $type, string $slug, $coverFile): ?string
+    {
+        $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        $mimeType = $coverFile->getMimeType();
+
+        if (! in_array($mimeType, $allowedMimeTypes, true)) {
+            return null;
+        }
+
+        $uploadDir = FCPATH . 'assets' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'covers';
+        if (! is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        $safeSlug = preg_replace('/[^a-z0-9\-]+/i', '-', strtolower($slug));
+        $fileName = $type . '-' . $safeSlug . '-' . time();
+        $targetPath = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
+
+        $resultPath = $this->resizeAndStoreCover($coverFile->getTempName(), $mimeType, $targetPath);
+        if ($resultPath === null) {
+            return null;
+        }
+
+        return base_url('assets/images/covers/' . basename($resultPath));
     }
 }

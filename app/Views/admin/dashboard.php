@@ -11,6 +11,9 @@ $catalog_total = max(1, (int) $total_users + (int) $total_posts + (int) $total_m
 $users_pct = (int) round(((int) $total_users / $catalog_total) * 100);
 $posts_pct = (int) round(((int) $total_posts / $catalog_total) * 100);
 $manga_pct = (int) round(((int) $total_manga / $catalog_total) * 100);
+$balance_score = max(0, 100 - abs($posts_pct - $manga_pct));
+$freshness_score = min(100, (count($recent_posts) + count($recent_manga)) * 15);
+$readiness_score = min(100, 35 + ((int) $total_users * 3) + ((int) $total_manga * 2));
 
 $activity_feed = [];
 foreach (array_slice($recent_posts, 0, 3) as $item) {
@@ -268,6 +271,36 @@ foreach (array_slice($recent_manga, 0, 3) as $item) {
             </div>
         </div>
 
+        <div class="grid gap-4 md:grid-cols-3">
+            <div class="card bg-base-100 shadow-xl border border-base-300">
+                <div class="card-body items-center text-center gap-4">
+                    <div class="radial-progress text-primary" style="--value:<?= $balance_score ?>;" role="progressbar"><?= $balance_score ?>%</div>
+                    <div>
+                        <div class="font-semibold">Catalog balance</div>
+                        <div class="text-sm text-base-content/60">Perbandingan manga dan posts tetap seimbang.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl border border-base-300">
+                <div class="card-body items-center text-center gap-4">
+                    <div class="radial-progress text-secondary" style="--value:<?= $freshness_score ?>;" role="progressbar"><?= $freshness_score ?>%</div>
+                    <div>
+                        <div class="font-semibold">Freshness</div>
+                        <div class="text-sm text-base-content/60">Update terbaru terlihat aktif di timeline.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card bg-base-100 shadow-xl border border-base-300">
+                <div class="card-body items-center text-center gap-4">
+                    <div class="radial-progress text-accent" style="--value:<?= $readiness_score ?>;" role="progressbar"><?= $readiness_score ?>%</div>
+                    <div>
+                        <div class="font-semibold">Readiness</div>
+                        <div class="text-sm text-base-content/60">Siap untuk diisi konten dan cover baru.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="grid lg:grid-cols-2 gap-6">
             <div class="card bg-base-100 shadow-xl border border-base-300">
                 <div class="card-body">
@@ -275,7 +308,12 @@ foreach (array_slice($recent_manga, 0, 3) as $item) {
                     <div class="space-y-3 mt-2">
                         <?php foreach ($recent_posts as $item): ?>
                             <div class="rounded-2xl border border-base-300 bg-base-200/50 p-4 transition-colors hover:bg-base-200">
-                                <div class="font-semibold"><?= esc($item['title'] ?? 'Untitled post') ?></div>
+                                <div class="flex items-center justify-between gap-3 flex-wrap">
+                                    <div class="font-semibold"><?= esc($item['title'] ?? 'Untitled post') ?></div>
+                                    <?php if (! empty($item['slug'])): ?>
+                                        <a href="<?= site_url('admin/posts/edit/' . $item['slug']) ?>" class="btn btn-xs btn-outline">Edit</a>
+                                    <?php endif; ?>
+                                </div>
                                 <div class="text-sm text-base-content/70 mt-1 line-clamp-3"><?= esc($item['excerpt'] ?? '') ?></div>
                             </div>
                         <?php endforeach; ?>
@@ -289,7 +327,12 @@ foreach (array_slice($recent_manga, 0, 3) as $item) {
                     <div class="space-y-3 mt-2">
                         <?php foreach ($recent_manga as $item): ?>
                             <div class="rounded-2xl border border-base-300 bg-base-200/50 p-4 transition-colors hover:bg-base-200">
-                                <div class="font-semibold"><?= esc($item['title'] ?? 'Untitled manga') ?></div>
+                                <div class="flex items-center justify-between gap-3 flex-wrap">
+                                    <div class="font-semibold"><?= esc($item['title'] ?? 'Untitled manga') ?></div>
+                                    <?php if (! empty($item['slug'])): ?>
+                                        <a href="<?= site_url('admin/manga/edit/' . $item['slug']) ?>" class="btn btn-xs btn-outline">Edit</a>
+                                    <?php endif; ?>
+                                </div>
                                 <div class="text-sm text-base-content/70 mt-1 line-clamp-3"><?= esc($item['synopsis'] ?? '') ?></div>
                             </div>
                         <?php endforeach; ?>
