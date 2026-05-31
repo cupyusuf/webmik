@@ -6,6 +6,30 @@ $total_posts = $total_posts ?? 0;
 $total_manga = $total_manga ?? 0;
 $recent_posts = $recent_posts ?? [];
 $recent_manga = $recent_manga ?? [];
+
+$catalog_total = max(1, (int) $total_users + (int) $total_posts + (int) $total_manga);
+$users_pct = (int) round(((int) $total_users / $catalog_total) * 100);
+$posts_pct = (int) round(((int) $total_posts / $catalog_total) * 100);
+$manga_pct = (int) round(((int) $total_manga / $catalog_total) * 100);
+
+$activity_feed = [];
+foreach (array_slice($recent_posts, 0, 3) as $item) {
+    $activity_feed[] = [
+        'type' => 'Post',
+        'title' => $item['title'] ?? 'Untitled post',
+        'detail' => $item['excerpt'] ?? 'Editorial update',
+        'tone' => 'secondary',
+    ];
+}
+
+foreach (array_slice($recent_manga, 0, 3) as $item) {
+    $activity_feed[] = [
+        'type' => 'Manga',
+        'title' => $item['title'] ?? 'Untitled manga',
+        'detail' => $item['synopsis'] ?? 'Catalog update',
+        'tone' => 'primary',
+    ];
+}
 ?>
 
 <div class="min-h-screen bg-base-200/80 p-4 md:p-6">
@@ -140,6 +164,8 @@ $recent_manga = $recent_manga ?? [];
                     <span class="text-sm uppercase tracking-wide text-base-content/50">Users</span>
                     <p class="text-4xl font-black leading-none"><?= (int) $total_users ?></p>
                     <div class="text-xs text-base-content/50">Registered accounts</div>
+                    <progress class="progress progress-primary mt-4" value="<?= $users_pct ?>" max="100"></progress>
+                    <div class="text-[11px] text-base-content/50 mt-1"><?= $users_pct ?>% of current content volume</div>
                 </div>
             </div>
             <div class="card bg-base-100 shadow-xl border border-base-300">
@@ -147,6 +173,8 @@ $recent_manga = $recent_manga ?? [];
                     <span class="text-sm uppercase tracking-wide text-base-content/50">Posts</span>
                     <p class="text-4xl font-black leading-none"><?= (int) $total_posts ?></p>
                     <div class="text-xs text-base-content/50">Editorial content</div>
+                    <progress class="progress progress-secondary mt-4" value="<?= $posts_pct ?>" max="100"></progress>
+                    <div class="text-[11px] text-base-content/50 mt-1"><?= $posts_pct ?>% of current content volume</div>
                 </div>
             </div>
             <div class="card bg-base-100 shadow-xl border border-base-300">
@@ -154,6 +182,88 @@ $recent_manga = $recent_manga ?? [];
                     <span class="text-sm uppercase tracking-wide text-base-content/50">Manga</span>
                     <p class="text-4xl font-black leading-none"><?= (int) $total_manga ?></p>
                     <div class="text-xs text-base-content/50">Public catalog</div>
+                    <progress class="progress progress-accent mt-4" value="<?= $manga_pct ?>" max="100"></progress>
+                    <div class="text-[11px] text-base-content/50 mt-1"><?= $manga_pct ?>% of current content volume</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="card bg-base-100 shadow-xl border border-base-300">
+                <div class="card-body gap-5">
+                    <div class="flex items-start justify-between gap-3 flex-wrap">
+                        <div>
+                            <h2 class="card-title text-2xl">System metrics</h2>
+                            <p class="text-sm text-base-content/70">Gambaran cepat komposisi konten di control room.</p>
+                        </div>
+                        <span class="badge badge-outline">Live</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="font-medium">Manga catalog</span>
+                                <span class="text-base-content/50"><?= $manga_pct ?>%</span>
+                            </div>
+                            <progress class="progress progress-primary w-full" value="<?= $manga_pct ?>" max="100"></progress>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="font-medium">Editorial posts</span>
+                                <span class="text-base-content/50"><?= $posts_pct ?>%</span>
+                            </div>
+                            <progress class="progress progress-secondary w-full" value="<?= $posts_pct ?>" max="100"></progress>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between text-sm">
+                                <span class="font-medium">Active users</span>
+                                <span class="text-base-content/50"><?= $users_pct ?>%</span>
+                            </div>
+                            <progress class="progress progress-accent w-full" value="<?= $users_pct ?>" max="100"></progress>
+                        </div>
+                    </div>
+
+                    <div class="rounded-3xl border border-base-300 bg-base-200/60 p-4">
+                        <div class="text-xs uppercase tracking-wide text-base-content/50">Control room note</div>
+                        <p class="mt-2 text-sm text-base-content/70">Gunakan upload cover untuk menjaga identitas visual setiap seri tetap seragam di halaman publik.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl border border-base-300">
+                <div class="card-body gap-5">
+                    <div class="flex items-start justify-between gap-3 flex-wrap">
+                        <div>
+                            <h2 class="card-title text-2xl">Recent activity</h2>
+                            <p class="text-sm text-base-content/70">Aktivitas terbaru di katalog dan editorial.</p>
+                        </div>
+                        <span class="badge badge-outline">Timeline</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <?php if (! empty($activity_feed)): ?>
+                            <?php foreach ($activity_feed as $index => $item): ?>
+                                <div class="flex gap-4">
+                                    <div class="flex flex-col items-center">
+                                        <div class="h-3 w-3 rounded-full bg-<?= esc($item['tone']) ?> mt-2"></div>
+                                        <?php if ($index < count($activity_feed) - 1): ?>
+                                            <div class="w-px flex-1 bg-base-300 mt-1"></div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="flex-1 rounded-2xl border border-base-300 bg-base-200/50 p-4">
+                                        <div class="flex items-center justify-between gap-3 flex-wrap">
+                                            <span class="badge badge-<?= esc($item['tone']) ?> badge-sm"><?= esc($item['type']) ?></span>
+                                            <span class="text-[11px] uppercase tracking-wide text-base-content/40">Recent</span>
+                                        </div>
+                                        <div class="mt-2 font-semibold"><?= esc($item['title']) ?></div>
+                                        <p class="text-sm text-base-content/70 mt-1 line-clamp-3"><?= esc($item['detail']) ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="rounded-3xl border border-dashed border-base-300 bg-base-200/50 p-6 text-sm text-base-content/60">Belum ada aktivitas terbaru.</div>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
         </div>
