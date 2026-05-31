@@ -10,20 +10,26 @@ $recent_manga = $recent_manga ?? [];
 
 <div class="min-h-screen bg-base-200/80 p-4 md:p-6">
     <div class="max-w-7xl mx-auto space-y-8">
-        <section class="rounded-3xl bg-gradient-to-br from-base-100 via-base-100 to-base-200 border border-base-300 shadow-xl overflow-hidden">
-            <div class="p-6 md:p-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-                <div class="max-w-2xl space-y-3">
-                    <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                        <span class="h-2 w-2 rounded-full bg-primary"></span>
-                        Admin workspace
+        <section class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-stretch">
+            <div class="rounded-3xl bg-gradient-to-br from-base-100 via-base-100 to-base-200 border border-base-300 shadow-xl overflow-hidden">
+                <div class="p-6 md:p-8 flex flex-col gap-6 h-full justify-between">
+                    <div class="max-w-2xl space-y-3">
+                        <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                            <span class="h-2 w-2 rounded-full bg-primary"></span>
+                            Admin workspace
+                        </div>
+                        <h1 class="text-3xl md:text-4xl font-black tracking-tight">Admin Dashboard</h1>
+                        <p class="text-base-content/70 max-w-xl">Ringkasan cepat untuk konten dan pengguna, ditambah upload cover langsung dari dashboard tanpa keluar halaman.</p>
                     </div>
-                    <h1 class="text-3xl md:text-4xl font-black tracking-tight">Admin Dashboard</h1>
-                    <p class="text-base-content/70 max-w-xl">Ringkasan cepat untuk konten dan pengguna, ditambah upload cover langsung dari dashboard tanpa keluar halaman.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="<?= site_url('/') ?>" class="btn btn-ghost">View Site</a>
+                        <a href="<?= site_url('auth/logout') ?>" class="btn btn-outline">Logout</a>
+                    </div>
                 </div>
-                <div class="flex flex-wrap gap-2">
-                    <a href="<?= site_url('/') ?>" class="btn btn-ghost">View Site</a>
-                    <a href="<?= site_url('auth/logout') ?>" class="btn btn-outline">Logout</a>
-                </div>
+            </div>
+
+            <div class="rounded-3xl overflow-hidden border border-base-300 shadow-xl bg-base-100">
+                <img src="<?= base_url('assets/images/illustrations/admin-comic.svg') ?>" alt="Admin comic illustration" class="w-full h-full object-cover">
             </div>
         </section>
 
@@ -49,26 +55,42 @@ $recent_manga = $recent_manga ?? [];
                     <div class="text-xs text-base-content/50">Ukuran akan diperkecil otomatis agar ringan.</div>
                 </div>
 
-                <div class="grid gap-2 md:grid-cols-2 xl:grid-cols-4">
-                    <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
-                        <div class="text-xs uppercase tracking-wide text-base-content/50">Contoh manga slug</div>
-                        <div class="mt-2 font-semibold">tales-of-the-blue-sea</div>
+                <div class="grid gap-4 xl:grid-cols-[1.15fr_0.85fr] items-start">
+                    <div class="grid gap-2 md:grid-cols-2">
+                        <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
+                            <div class="text-xs uppercase tracking-wide text-base-content/50">Contoh manga slug</div>
+                            <div class="mt-2 font-semibold">tales-of-the-blue-sea</div>
+                        </div>
+                        <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
+                            <div class="text-xs uppercase tracking-wide text-base-content/50">Contoh post slug</div>
+                            <div class="mt-2 font-semibold">introducing-webmik-redesign</div>
+                        </div>
+                        <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
+                            <div class="text-xs uppercase tracking-wide text-base-content/50">Format file</div>
+                            <div class="mt-2 font-semibold">JPG / PNG / WEBP</div>
+                        </div>
+                        <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
+                            <div class="text-xs uppercase tracking-wide text-base-content/50">Output</div>
+                            <div class="mt-2 font-semibold">Resize + save ke assets</div>
+                        </div>
                     </div>
-                    <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
-                        <div class="text-xs uppercase tracking-wide text-base-content/50">Contoh post slug</div>
-                        <div class="mt-2 font-semibold">introducing-webmik-redesign</div>
-                    </div>
-                    <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
-                        <div class="text-xs uppercase tracking-wide text-base-content/50">Format file</div>
-                        <div class="mt-2 font-semibold">JPG / PNG / WEBP</div>
-                    </div>
-                    <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
-                        <div class="text-xs uppercase tracking-wide text-base-content/50">Output</div>
-                        <div class="mt-2 font-semibold">Resize + save ke assets</div>
+
+                    <div class="rounded-3xl border border-base-300 bg-base-200/50 p-4 md:p-5">
+                        <div class="flex items-center justify-between gap-3 mb-4">
+                            <div>
+                                <div class="text-xs uppercase tracking-wide text-base-content/50">Preview</div>
+                                <div class="font-semibold">Cover yang dipilih</div>
+                            </div>
+                            <span class="badge badge-outline">Live</span>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden border border-dashed border-base-300 bg-base-100 shadow-sm">
+                            <img id="cover-preview" src="<?= base_url('assets/images/placeholder-cover.svg') ?>" alt="Cover preview" class="w-full aspect-[4/5] object-cover">
+                        </div>
+                        <p class="mt-3 text-xs text-base-content/50">Preview akan berubah saat Anda memilih file cover dari komputer.</p>
                     </div>
                 </div>
 
-                <form action="<?= site_url('admin/covers/upload') ?>" method="post" enctype="multipart/form-data" class="grid gap-4 md:grid-cols-4">
+                <form action="<?= site_url('admin/covers/upload') ?>" method="post" enctype="multipart/form-data" class="grid gap-4 md:grid-cols-4" id="cover-upload-form">
                     <?= csrf_field() ?>
                     <label class="form-control">
                         <span class="label-text">Content Type</span>
@@ -85,7 +107,7 @@ $recent_manga = $recent_manga ?? [];
 
                     <label class="form-control md:col-span-2">
                         <span class="label-text">Cover Image</span>
-                        <input type="file" name="cover_file" class="file-input file-input-bordered w-full" accept="image/png,image/jpeg,image/webp" required>
+                        <input type="file" name="cover_file" id="cover_file_input" class="file-input file-input-bordered w-full" accept="image/png,image/jpeg,image/webp" required>
                     </label>
 
                     <div class="md:col-span-4 flex justify-end">
@@ -150,5 +172,26 @@ $recent_manga = $recent_manga ?? [];
         </div>
     </div>
 </div>
+
+<script>
+    (function() {
+        var input = document.getElementById('cover_file_input');
+        var preview = document.getElementById('cover-preview');
+        if (!input || !preview) return;
+
+        input.addEventListener('change', function() {
+            var file = this.files && this.files[0];
+            if (!file) {
+                preview.src = '<?= base_url('assets/images/placeholder-cover.svg') ?>';
+                return;
+            }
+            var objectUrl = URL.createObjectURL(file);
+            preview.src = objectUrl;
+            preview.onload = function() {
+                URL.revokeObjectURL(objectUrl);
+            };
+        });
+    })();
+</script>
 
 <?= $this->include('partials/foot') ?>

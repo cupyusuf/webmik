@@ -3,6 +3,10 @@
 <div class="min-h-screen bg-base-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
         <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] items-stretch">
+            <div class="rounded-3xl overflow-hidden border border-base-300 shadow-xl bg-base-100">
+                <img src="<?= base_url('assets/images/illustrations/register-comic.svg') ?>" alt="Register comic illustration" class="w-full h-full object-cover">
+            </div>
+
             <div class="rounded-3xl bg-base-100 shadow-xl border border-base-300 p-8 md:p-10">
                 <div class="space-y-3 mb-6">
                     <div class="inline-flex items-center rounded-full bg-secondary/10 px-3 py-1 text-xs font-semibold text-secondary">Reader Account</div>
@@ -65,6 +69,16 @@
                     <div class="rounded-2xl border border-base-300 bg-base-100/80 p-4">
                         <div class="font-semibold">Responsive</div>
                         <div class="text-sm text-base-content/60 mt-1">Nyaman di desktop dan mobile.</div>
+                    </div>
+                </div>
+
+                <div class="mt-8 rounded-3xl bg-base-100/70 border border-base-300 p-5">
+                    <div class="flex items-center gap-3">
+                        <img src="<?= base_url('assets/images/logo.svg') ?>" alt="WebMik" class="h-10 w-10">
+                        <div>
+                            <div class="font-semibold">Reader-first experience</div>
+                            <div class="text-sm text-base-content/60">Desain dibuat supaya terasa seperti portal baca komik, bukan form biasa.</div>
+                        </div>
                     </div>
                 </div>
             </div>
