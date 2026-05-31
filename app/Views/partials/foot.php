@@ -84,6 +84,36 @@
       })();
   </script>
 
+  <script>
+      // Generic cover preview binding for any future CRUD forms.
+      (function() {
+          var inputs = document.querySelectorAll('[data-cover-preview-input]');
+          if (!inputs.length) return;
+
+          inputs.forEach(function(input) {
+              input.addEventListener('change', function() {
+                  var targetSelector = input.getAttribute('data-cover-preview-target');
+                  if (!targetSelector) return;
+
+                  var preview = document.querySelector(targetSelector);
+                  if (!preview) return;
+
+                  var file = input.files && input.files[0];
+                  if (!file) {
+                      preview.src = '<?= base_url('assets/images/placeholder-cover.svg') ?>';
+                      return;
+                  }
+
+                  var objectUrl = URL.createObjectURL(file);
+                  preview.src = objectUrl;
+                  preview.onload = function() {
+                      URL.revokeObjectURL(objectUrl);
+                  };
+              });
+          });
+      })();
+  </script>
+
   </body>
 
   </html>

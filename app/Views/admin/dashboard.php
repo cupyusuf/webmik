@@ -10,17 +10,34 @@ $recent_manga = $recent_manga ?? [];
 
 <div class="min-h-screen bg-base-200/80 p-4 md:p-6">
     <div class="max-w-7xl mx-auto space-y-8">
-        <section class="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] items-stretch">
-            <div class="rounded-3xl bg-gradient-to-br from-base-100 via-base-100 to-base-200 border border-base-300 shadow-xl overflow-hidden">
-                <div class="p-6 md:p-8 flex flex-col gap-6 h-full justify-between">
-                    <div class="max-w-2xl space-y-3">
+        <section class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
+            <div class="rounded-3xl bg-gradient-to-br from-base-100 via-base-100 to-base-200 border border-base-300 shadow-xl overflow-hidden relative">
+                <div class="absolute inset-0 pointer-events-none opacity-60 bg-[linear-gradient(135deg,rgba(37,99,235,0.06),transparent_35%,rgba(6,182,212,0.08))]"></div>
+                <div class="p-6 md:p-8 flex flex-col gap-6 h-full justify-between relative z-10">
+                    <div class="max-w-3xl space-y-4">
                         <div class="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
-                            <span class="h-2 w-2 rounded-full bg-primary"></span>
-                            Admin workspace
+                            <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                            Control room active
                         </div>
-                        <h1 class="text-3xl md:text-4xl font-black tracking-tight">Admin Dashboard</h1>
-                        <p class="text-base-content/70 max-w-xl">Ringkasan cepat untuk konten dan pengguna, ditambah upload cover langsung dari dashboard tanpa keluar halaman.</p>
+                        <h1 class="text-3xl md:text-5xl font-black tracking-tight leading-tight">Comic Control Room</h1>
+                        <p class="text-base-content/70 max-w-2xl text-lg">Panel ini mengawasi katalog, pembaruan konten, dan cover upload seperti ruang kontrol untuk seri komik yang aktif.</p>
+
+                        <div class="grid gap-3 sm:grid-cols-3 pt-2">
+                            <div class="rounded-2xl bg-base-100/80 border border-base-300 p-4 shadow-sm">
+                                <div class="text-xs uppercase tracking-wide text-base-content/50">Live content</div>
+                                <div class="mt-1 font-semibold">Manga & posts</div>
+                            </div>
+                            <div class="rounded-2xl bg-base-100/80 border border-base-300 p-4 shadow-sm">
+                                <div class="text-xs uppercase tracking-wide text-base-content/50">Cover pipeline</div>
+                                <div class="mt-1 font-semibold">Upload + preview</div>
+                            </div>
+                            <div class="rounded-2xl bg-base-100/80 border border-base-300 p-4 shadow-sm">
+                                <div class="text-xs uppercase tracking-wide text-base-content/50">Reader tone</div>
+                                <div class="mt-1 font-semibold">UI lebih serasi</div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="flex flex-wrap gap-2">
                         <a href="<?= site_url('/') ?>" class="btn btn-ghost">View Site</a>
                         <a href="<?= site_url('auth/logout') ?>" class="btn btn-outline">Logout</a>
@@ -84,7 +101,7 @@ $recent_manga = $recent_manga ?? [];
                             <span class="badge badge-outline">Live</span>
                         </div>
                         <div class="rounded-2xl overflow-hidden border border-dashed border-base-300 bg-base-100 shadow-sm">
-                            <img id="cover-preview" src="<?= base_url('assets/images/placeholder-cover.svg') ?>" alt="Cover preview" class="w-full aspect-[4/5] object-cover">
+                            <img id="cover-preview" data-cover-preview-target src="<?= base_url('assets/images/placeholder-cover.svg') ?>" alt="Cover preview" class="w-full aspect-[4/5] object-cover">
                         </div>
                         <p class="mt-3 text-xs text-base-content/50">Preview akan berubah saat Anda memilih file cover dari komputer.</p>
                     </div>
@@ -107,7 +124,7 @@ $recent_manga = $recent_manga ?? [];
 
                     <label class="form-control md:col-span-2">
                         <span class="label-text">Cover Image</span>
-                        <input type="file" name="cover_file" id="cover_file_input" class="file-input file-input-bordered w-full" accept="image/png,image/jpeg,image/webp" required>
+                        <input type="file" name="cover_file" id="cover_file_input" class="file-input file-input-bordered w-full" accept="image/png,image/jpeg,image/webp" data-cover-preview-input data-cover-preview-target="#cover-preview" required>
                     </label>
 
                     <div class="md:col-span-4 flex justify-end">
@@ -172,26 +189,5 @@ $recent_manga = $recent_manga ?? [];
         </div>
     </div>
 </div>
-
-<script>
-    (function() {
-        var input = document.getElementById('cover_file_input');
-        var preview = document.getElementById('cover-preview');
-        if (!input || !preview) return;
-
-        input.addEventListener('change', function() {
-            var file = this.files && this.files[0];
-            if (!file) {
-                preview.src = '<?= base_url('assets/images/placeholder-cover.svg') ?>';
-                return;
-            }
-            var objectUrl = URL.createObjectURL(file);
-            preview.src = objectUrl;
-            preview.onload = function() {
-                URL.revokeObjectURL(objectUrl);
-            };
-        });
-    })();
-</script>
 
 <?= $this->include('partials/foot') ?>

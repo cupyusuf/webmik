@@ -2,36 +2,9 @@
 
 <div class="min-h-screen bg-base-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
-        <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
-            <div class="rounded-3xl bg-gradient-to-br from-primary/90 via-primary to-secondary p-8 md:p-10 text-primary-content shadow-2xl overflow-hidden relative">
-                <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,_white_0,_transparent_35%),radial-gradient(circle_at_bottom_left,_white_0,_transparent_28%)]"></div>
-                <div class="relative z-10 max-w-xl space-y-6">
-                    <a href="<?= site_url('/') ?>" class="inline-flex items-center gap-3 rounded-full bg-white/10 px-4 py-2 backdrop-blur">
-                        <img src="<?= base_url('assets/images/logo.svg') ?>" alt="WebMik" class="h-8 w-8" />
-                        <span class="font-bold">WebMik Reader Hub</span>
-                    </a>
-
-                    <div class="space-y-3">
-                        <div class="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide">Admin Login</div>
-                        <h1 class="text-4xl md:text-5xl font-black leading-tight tracking-tight">Masuk ke panel untuk mengelola koleksi komik dan artikel.</h1>
-                        <p class="text-white/80 text-lg max-w-lg">Tampilan dibuat lebih tenang dan rapi supaya terasa seperti bagian dari sebuah reader, bukan halaman admin yang kaku.</p>
-                    </div>
-
-                    <div class="grid gap-3 sm:grid-cols-3 text-sm">
-                        <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
-                            <div class="font-semibold">Admin Panel</div>
-                            <div class="text-white/70 mt-1">Kontrol konten</div>
-                        </div>
-                        <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
-                            <div class="font-semibold">Reader Flow</div>
-                            <div class="text-white/70 mt-1">Lebih nyaman dibaca</div>
-                        </div>
-                        <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
-                            <div class="font-semibold">Fast Access</div>
-                            <div class="text-white/70 mt-1">Login ringan</div>
-                        </div>
-                    </div>
-                </div>
+        <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] items-stretch">
+            <div class="rounded-3xl overflow-hidden border border-base-300 shadow-xl bg-base-100">
+                <img src="<?= base_url('assets/images/illustrations/admin-comic.svg') ?>" alt="Admin comic illustration" class="w-full h-full object-cover">
             </div>
 
             <div class="card bg-base-100 shadow-xl border border-base-300">
@@ -74,11 +47,22 @@
                             <a href="<?= site_url('auth/register') ?>" class="btn btn-outline flex-1">Create account</a>
                         </div>
 
-                        <div class="pt-2 text-sm text-base-content/60 flex items-center justify-between gap-3">
+                        <div class="pt-2 text-sm text-base-content/60 flex items-center justify-between gap-3 flex-wrap">
                             <a href="<?= site_url('/') ?>" class="link link-hover">Back to home</a>
                             <span>Reader-first layout</span>
                         </div>
                     </form>
+
+                    <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
+                            <div class="text-xs uppercase tracking-wide text-base-content/50">Secure access</div>
+                            <div class="font-semibold mt-1">Controlled admin panel</div>
+                        </div>
+                        <div class="rounded-2xl border border-base-300 bg-base-200/60 p-4">
+                            <div class="text-xs uppercase tracking-wide text-base-content/50">Reader tone</div>
+                            <div class="font-semibold mt-1">Matches the comic theme</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
