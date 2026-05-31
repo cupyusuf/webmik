@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900">
+  <rect width="600" height="900" rx="24" fill="#111827" />
+  <g fill="#fbbd23" font-family="Inter, Arial, sans-serif">
+    <text x="50%" y="40%" text-anchor="middle" font-size="36" font-weight="700">Stories of the</text>
+    <text x="50%" y="48%" text-anchor="middle" font-size="48" font-weight="900">Night</text>
+    <text x="50%" y="70%" text-anchor="middle" font-size="16" opacity="0.9">Dark fantasy anthology</text>
+    <text x="50%" y="82%" text-anchor="middle" font-size="14" opacity="0.85">by B. Writer</text>
+  </g>
+</svg>
