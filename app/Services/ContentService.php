@@ -17,6 +17,8 @@ class ContentService
             'total_manga' => $this->safeCount(new MangaModel()),
             'recent_posts' => $this->safeLatest(new PostModel(), 4),
             'recent_manga' => $this->safeLatest(new MangaModel(), 4),
+            'all_posts' => $this->safeAll(new PostModel(), $this->samplePosts()),
+            'all_manga' => $this->safeAll(new MangaModel(), $this->sampleManga()),
         ];
     }
 
@@ -64,6 +66,16 @@ class ContentService
     {
         try {
             $rows = $model->orderBy('created_at', 'DESC')->findAll($limit);
+            return $rows ?: $fallback;
+        } catch (\Throwable $e) {
+            return $fallback;
+        }
+    }
+
+    private function safeAll(Model $model, array $fallback = []): array
+    {
+        try {
+            $rows = $model->orderBy('created_at', 'DESC')->findAll();
             return $rows ?: $fallback;
         } catch (\Throwable $e) {
             return $fallback;

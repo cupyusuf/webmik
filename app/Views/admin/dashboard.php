@@ -6,6 +6,8 @@ $total_posts = $total_posts ?? 0;
 $total_manga = $total_manga ?? 0;
 $recent_posts = $recent_posts ?? [];
 $recent_manga = $recent_manga ?? [];
+$all_posts = $all_posts ?? [];
+$all_manga = $all_manga ?? [];
 
 $catalog_total = max(1, (int) $total_users + (int) $total_posts + (int) $total_manga);
 $users_pct = (int) round(((int) $total_users / $catalog_total) * 100);
@@ -334,6 +336,60 @@ foreach (array_slice($recent_manga, 0, 3) as $item) {
                                     <?php endif; ?>
                                 </div>
                                 <div class="text-sm text-base-content/70 mt-1 line-clamp-3"><?= esc($item['synopsis'] ?? '') ?></div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+            <div class="card bg-base-100 shadow-xl border border-base-300">
+                <div class="card-body gap-4">
+                    <div class="flex items-start justify-between gap-3 flex-wrap">
+                        <div>
+                            <h2 class="card-title text-2xl">All Manga</h2>
+                            <p class="text-sm text-base-content/70">Daftar lengkap manga yang tampil di situs publik.</p>
+                        </div>
+                        <span class="badge badge-primary">CRUD</span>
+                    </div>
+
+                    <div class="max-h-[28rem] overflow-auto pr-1 space-y-3">
+                        <?php foreach ($all_manga as $item): ?>
+                            <div class="rounded-2xl border border-base-300 bg-base-200/50 p-4 flex items-center justify-between gap-4">
+                                <div class="min-w-0">
+                                    <div class="font-semibold truncate"><?= esc($item['title'] ?? 'Untitled manga') ?></div>
+                                    <div class="text-xs text-base-content/50 truncate"><?= esc($item['slug'] ?? '') ?></div>
+                                </div>
+                                <?php if (! empty($item['slug'])): ?>
+                                    <a href="<?= site_url('admin/manga/edit/' . $item['slug']) ?>" class="btn btn-sm btn-outline">Edit</a>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card bg-base-100 shadow-xl border border-base-300">
+                <div class="card-body gap-4">
+                    <div class="flex items-start justify-between gap-3 flex-wrap">
+                        <div>
+                            <h2 class="card-title text-2xl">All Posts</h2>
+                            <p class="text-sm text-base-content/70">Daftar lengkap editorial post yang bisa diedit dari sini.</p>
+                        </div>
+                        <span class="badge badge-secondary">CRUD</span>
+                    </div>
+
+                    <div class="max-h-[28rem] overflow-auto pr-1 space-y-3">
+                        <?php foreach ($all_posts as $item): ?>
+                            <div class="rounded-2xl border border-base-300 bg-base-200/50 p-4 flex items-center justify-between gap-4">
+                                <div class="min-w-0">
+                                    <div class="font-semibold truncate"><?= esc($item['title'] ?? 'Untitled post') ?></div>
+                                    <div class="text-xs text-base-content/50 truncate"><?= esc($item['slug'] ?? '') ?></div>
+                                </div>
+                                <?php if (! empty($item['slug'])): ?>
+                                    <a href="<?= site_url('admin/posts/edit/' . $item['slug']) ?>" class="btn btn-sm btn-outline">Edit</a>
+                                <?php endif; ?>
                             </div>
                         <?php endforeach; ?>
                     </div>

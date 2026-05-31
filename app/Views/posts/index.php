@@ -4,6 +4,7 @@
 $title = $title ?? 'Artikel & Update';
 $subtitle = $subtitle ?? '';
 $items = $items ?? [];
+$isAdmin = (bool) session()->get('is_admin');
 ?>
 
 <div class="min-h-screen bg-base-200">
@@ -16,6 +17,12 @@ $items = $items ?? [];
                 </div>
                 <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight"><?= esc($title) ?></h1>
                 <p class="text-base-content/70 mt-2 text-lg md:text-base max-w-2xl"><?= esc($subtitle) ?></p>
+                <?php if ($isAdmin): ?>
+                    <div class="mt-3 inline-flex items-center gap-2 rounded-full bg-secondary/10 px-3 py-1 text-xs font-semibold text-secondary">
+                        <span class="h-2 w-2 rounded-full bg-secondary"></span>
+                        Admin mode aktif
+                    </div>
+                <?php endif; ?>
             </div>
             <div class="flex gap-2">
                 <a href="<?= site_url('/') ?>" class="btn btn-ghost">Home</a>
@@ -34,7 +41,12 @@ $items = $items ?? [];
                             <figure><img src="<?= base_url('assets/images/placeholder-cover.svg') ?>" alt="placeholder" class="w-full h-44 object-cover" /></figure>
                         <?php endif; ?>
                         <div class="card-body">
-                            <h2 class="card-title text-lg font-semibold"><?= esc($item['title'] ?? '') ?></h2>
+                            <div class="flex items-center justify-between gap-3 flex-wrap">
+                                <h2 class="card-title text-lg font-semibold"><?= esc($item['title'] ?? '') ?></h2>
+                                <?php if ($isAdmin && ! empty($item['slug'])): ?>
+                                    <a href="<?= site_url('admin/posts/edit/' . $item['slug']) ?>" class="btn btn-xs btn-outline">Edit</a>
+                                <?php endif; ?>
+                            </div>
                             <p class="text-sm text-base-content/70 line-clamp-3"><?= esc($item['excerpt'] ?? '') ?></p>
                             <div class="card-actions justify-end mt-2">
                                 <a href="#" class="btn btn-link btn-sm px-0">Read more</a>

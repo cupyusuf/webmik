@@ -38,7 +38,7 @@ $cover = $item['cover'] ?? base_url('assets/images/placeholder-cover.svg');
                     <div class="flex items-start justify-between gap-3 flex-wrap">
                         <div>
                             <h2 class="card-title text-2xl">Form post</h2>
-                            <p class="text-sm text-base-content/70">Preview cover mengikuti file yang Anda pilih.</p>
+                            <p class="text-sm text-base-content/70">Preview ini dibuat khusus untuk artwork editorial agar cocok dengan nuansa artikel dan update.</p>
                         </div>
                         <span class="badge badge-outline">Live preview</span>
                     </div>

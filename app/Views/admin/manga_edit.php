@@ -42,7 +42,7 @@ $cover = $item['cover'] ?? base_url('assets/images/placeholder-cover.svg');
                     <div class="flex items-start justify-between gap-3 flex-wrap">
                         <div>
                             <h2 class="card-title text-2xl">Form manga</h2>
-                            <p class="text-sm text-base-content/70">Preview cover akan mengikuti file yang Anda pilih.</p>
+                            <p class="text-sm text-base-content/70">Preview ini hanya untuk artwork manga, jadi detail cover akan terlihat lebih cepat sebelum disimpan.</p>
                         </div>
                         <span class="badge badge-outline">Live preview</span>
                     </div>
